@@ -1,4 +1,6 @@
 <script>
+  import DescriptionList from '../../../lib/DescriptionList.svelte';
+
   const buttonClasses =
     'py-2 px-6 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-700';
 
@@ -6,6 +8,14 @@
   $: borderCountries = data.borderCountries;
   $: borderKeys = Object.keys(borderCountries);
   $: country = data.country;
+  $: capital = country.capital?.[0] ?? 'N/A';
+  $: region = country.region;
+  $: population = country.population?.toLocaleString('en-us');
+  $: domain = country.tld?.join(', ');
+  $: currencies = Object.values(country.currencies ?? {})
+    .map((c) => c.name)
+    .join(', ');
+  $: languages = Object.values(country.languages ?? {}).join(', ');
 </script>
 
 <div>
@@ -42,7 +52,31 @@
         <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
           {country.name.common}
         </h2>
-        <div class="grid grid-cols-2 gap-4">Lists go here</div>
+        <div class="grid grid-cols-2 gap-4">
+          <DescriptionList
+            items={[
+              { key: 'Capital', value: capital },
+              { key: 'Region', value: region },
+              {
+                key: 'Population',
+                value: population
+              }
+            ]}
+          />
+          <DescriptionList
+            items={[
+              { key: 'Top-Level Domain', value: domain },
+              {
+                key: 'Currencies',
+                value: currencies
+              },
+              {
+                key: 'Languages',
+                value: languages
+              }
+            ]}
+          />
+        </div>
         {#if borderKeys.length}
           <dl class="flex flex-col md:flex-row mt-8 text-sm">
             <dt class="font-bold whitespace-nowrap mr-4 mb-4">Border Countries:</dt>
