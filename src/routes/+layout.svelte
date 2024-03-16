@@ -1,5 +1,6 @@
 <script>
-  import "../app.css";
+  import NavBar from '$lib/NavBar.svelte';
+  import '../app.css';
 </script>
 
 <svelte:head>
@@ -12,6 +13,9 @@
   />
 </svelte:head>
 
-<main>
-  <slot />
-</main>
+<div class="flex flex-col text-[#111517] bg-[#fafafa] dark:text-white dark:bg-[#202c37]">
+  <NavBar />
+  <main class="min-h-screen flex flex-col p-8 text-center">
+    <slot />
+  </main>
+</div>

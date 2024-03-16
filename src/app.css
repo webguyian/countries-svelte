@@ -25,9 +25,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-main {
-  display: flex;
-  place-content: center;
-  max-width: 1440px;
-  margin: 0 auto;
+:root.dark [data-id='dark-mode'],
+:root:not(.dark) [data-id='light-mode'] {
+  display: none;
+}
+
+html,
+body {
+  height: 100%;
 }
