@@ -1,20 +1,34 @@
 <script>
-  import CountryCard from '../lib/CountryCard.svelte';
-
-  const showMore = true;
-  let page = 12;
+  import { CountryCard, SearchFilter } from '$lib';
 
   export let data;
-  export let countries = data.allCountries.slice(0, page);
 
-  const countryCount = data.allCountries.length ?? 0;
   const onLoadMore = () => {
     page = page * 2;
     countries = data.allCountries.slice(0, page);
   };
+
+  const filterByRegion = (country) => {
+    return regionQuery ? country.region === regionQuery : country;
+  };
+
+  const filterBySearch = (country) => {
+    return searchQuery
+      ? country.name.common.toLowerCase().startsWith(searchQuery.toLowerCase())
+      : country;
+  };
+
+  $: page = 12;
+  $: regionQuery = data.regionQuery;
+  $: searchQuery = data.searchQuery;
+  $: filteredCountries = data.allCountries.filter(filterByRegion).filter(filterBySearch);
+  $: countries = filteredCountries.slice(0, page);
+  $: countryCount = filteredCountries.length ?? 0;
+  $: showMore = countryCount > countries.length;
 </script>
 
 <div>
+  <SearchFilter />
   <div class="grid grid-cols-fluid justify-items-center gap-10 mb-8">
     {#each countries as country}
       <CountryCard {country} />
