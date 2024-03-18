@@ -1,4 +1,5 @@
 <script>
+  import { base } from '$app/paths';
   export let country;
 
   $: ({ cca3, flags, region } = country);
@@ -8,8 +9,8 @@
 </script>
 
 <a
+  href="{base}/country/{cca3}"
   class="appearance-none w-[250px] bg-white border border-gray-200 shadow dark:bg-gray-700 dark:border-gray-600"
-  href="/country/{cca3}"
 >
   <div
     class="border-b border-gray-300 h-40 bg-no-repeat bg-cover bg-center dark:border-gray-700"

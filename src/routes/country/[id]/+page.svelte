@@ -1,4 +1,5 @@
 <script>
+  import { base } from '$app/paths';
   import DescriptionList from '../../../lib/DescriptionList.svelte';
 
   const buttonClasses =
@@ -20,7 +21,7 @@
 
 <div>
   <div class="mb-8 flex">
-    <a href="/" class="inline-flex items-center shadow {buttonClasses}">
+    <a href="{base}/" class="inline-flex items-center shadow {buttonClasses}">
       <svg
         class="mr-2"
         xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +83,7 @@
             <dt class="font-bold whitespace-nowrap mr-4 mb-4">Border Countries:</dt>
             <dd class="flex flex-wrap">
               {#each borderKeys as borderKey}
-                <a href="/country/{borderKey}" class={buttonClasses}>
+                <a href="{base}/country/{borderKey}" class={buttonClasses}>
                   {borderCountries[borderKey]}
                 </a>
               {/each}

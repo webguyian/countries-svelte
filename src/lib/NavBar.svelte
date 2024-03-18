@@ -1,11 +1,12 @@
 <script>
+  import { base } from '$app/paths';
   const toggleTheme = () => document.documentElement.classList.toggle('dark');
 </script>
 
 <nav
   class="flex items-center justify-between px-8 py-4 bg-white shadow dark:bg-[#2b3945] dark:text-white"
 >
-  <a class="font-extrabold text-lg" href="/"> Where in the world? </a>
+  <a class="font-extrabold text-lg" href="{base}/"> Where in the world? </a>
   <button
     class="flex text-gray-500 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-md text-sm p-2"
     type="button"

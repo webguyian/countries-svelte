@@ -1,5 +1,6 @@
 <script>
   import { goto } from '$app/navigation';
+  import { base } from '$app/paths';
   import { page } from '$app/stores';
   import { REGIONS, REGION_KEY, SEARCH_KEY } from '$lib/const';
 
@@ -54,7 +55,7 @@
 </script>
 
 <div class="flex flex-col md:flex-row justify-between mb-8">
-  <form class="w-full md:max-w-72 mb-5 md:mb-0" method="GET" action="/">
+  <form class="w-full md:max-w-72 mb-5 md:mb-0" method="GET" action="{base}/">
     <label
       for="search-filter"
       class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
