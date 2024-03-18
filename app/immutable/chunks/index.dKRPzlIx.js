@@ -1,0 +1,1 @@
+function n(s){return(s==null?void 0:s.length)!==void 0?s:Array.from(s)}const c="https://restcountries.com/v3.1",A=["Africa","Americas","Antarctic","Asia","Europe","Oceania"],E="region",u="search";export{c as A,E as R,u as S,A as a,n as e};
